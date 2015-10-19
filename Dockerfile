@@ -17,7 +17,7 @@ RUN apt-get install -y mapserver-bin cgi-mapserver php5-mapscript
 RUN apt-get install -y libapache2-mod-wsgi 
 RUN a2enmod wsgi
 
-RUN apt-get install -y git nano
+RUN apt-get install -y git nano wget
 
 RUN mkdir /opt/scribeui/
 RUN (cd /opt/ && git clone https://github.com/mapgears/scribeui.git)
@@ -61,7 +61,7 @@ RUN echo "        Order deny,allow" >> /etc/apache2/apache2.conf
 RUN echo "        Require all granted" >> /etc/apache2/apache2.conf
 RUN echo "</Directory>" >> /etc/apache2/apache2.conf
 
-#RUN (cd /opt/scribeui/ && make load-demo-data)
+RUN (cd /opt/scribeui/ && make load-demo-data)
 
 CMD ["/bin/bash"]
 
