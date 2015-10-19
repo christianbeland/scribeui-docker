@@ -29,5 +29,5 @@ mapserver.url = http://your_site_domain.com:8080/cgi-bin/mapserv
 
 /etc/init.d/apache2 start
 
-5- Browse to http://your_site_domain.com:80/scribeui/
+5- Browse to http://your_site_domain.com:8080/scribeui/
 Note: Password for the default workspace is 'default'.
