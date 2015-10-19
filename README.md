@@ -17,6 +17,7 @@ docker run --name scribeui -p 8080:80 -d christianbeland/scribeui-docker
 2- Attach to running container:
 
 docker ps
+
 docker exec -it CONTAINER_ID bash
 
 3- Edit /opt/scribeui/local.ini and modify to set the url:port on the following lines:
