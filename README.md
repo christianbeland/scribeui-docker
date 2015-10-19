@@ -12,7 +12,8 @@ The image is configured to run in production (in Apache).
 
 1- Start in background:
 
-docker run --name scribeui -p 8080:80 -d christianbeland/scribeui-docker
+docker run --name scribeui -p 8080:80 -i -t -d christianbeland/scribeui-docker bash
+
 
 2- Attach to running container:
 
