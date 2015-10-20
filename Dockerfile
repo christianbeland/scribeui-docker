@@ -5,7 +5,7 @@ RUN echo "deb-src http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu t
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 314DF160
 RUN apt-get update
-
+s
 # install apache
 RUN apt-get install -y apache2 apache2-mpm-worker apache2-threaded-dev apache2-utils
 RUN a2enmod actions cgi alias
@@ -63,6 +63,15 @@ RUN echo "</Directory>" >> /etc/apache2/apache2.conf
 
 RUN (cd /opt/scribeui/ && make load-demo-data)
 
-CMD ["/bin/bash"]
+ENV SCRIBEUI_URL localhost:80
+
+RUN echo "#!/bin/bash" >> /opt/entrypoint
+RUN echo 'set -e' >> /opt/entrypoint
+RUN echo "sed 's|cgi.url = http://localhost/cgi-bin|cgi.url = http://'$SCRIBEUI_URL'/cgi-bin|g' /opt/scribeui/local.ini > /opt/scribeui/local.ini.mod ; mv /opt/scribeui/local.ini.mod /opt/scribeui/local.ini" >> /opt/entrypoint
+RUN echo "sed 's|mapserver.url = http://localhost/cgi-bin/mapserv|mapserver.url = http://'$SCRIBEUI_URL'/cgi-bin/mapserv|g' /opt/scribeui/local.ini > /opt/scribeui/local.ini.mod ; mv /opt/scribeui/local.ini.mod /opt/scribeui/local.ini" >> /opt/entrypoint
+RUN echo 'exec "$@"' >> /opt/entrypoint
+RUN chmod +x /opt/entrypoint
+
+ENTRYPOINT ["/opt/entrypoint"]
 
 EXPOSE 80 443
