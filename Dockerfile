@@ -67,8 +67,8 @@ ENV SCRIBEUI_URL localhost:80
 
 RUN echo "#!/bin/bash" >> /opt/entrypoint
 RUN echo 'set -e' >> /opt/entrypoint
-RUN echo "sed 's|cgi.url = http://localhost/cgi-bin|cgi.url = http://'$SCRIBEUI_URL'/cgi-bin|g' /opt/scribeui/local.ini > /opt/scribeui/local.ini.mod ; mv /opt/scribeui/local.ini.mod /opt/scribeui/local.ini" >> /opt/entrypoint
-RUN echo "sed 's|mapserver.url = http://localhost/cgi-bin/mapserv|mapserver.url = http://'$SCRIBEUI_URL'/cgi-bin/mapserv|g' /opt/scribeui/local.ini > /opt/scribeui/local.ini.mod ; mv /opt/scribeui/local.ini.mod /opt/scribeui/local.ini" >> /opt/entrypoint
+RUN echo "sed 's|cgi.url = http://localhost/cgi-bin|cgi.url = http://'"'$SCRIBEUI_URL'"'/cgi-bin|g' /opt/scribeui/local.ini > /opt/scribeui/local.ini.mod ; mv /opt/scribeui/local.ini.mod /opt/scribeui/local.ini" >> /opt/entrypoint
+RUN echo "sed 's|mapserver.url = http://localhost/cgi-bin/mapserv|mapserver.url = http://'"'$SCRIBEUI_URL'"'/cgi-bin/mapserv|g' /opt/scribeui/local.ini > /opt/scribeui/local.ini.mod ; mv /opt/scribeui/local.ini.mod /opt/scribeui/local.ini" >> /opt/entrypoint
 RUN echo 'exec "$@"' >> /opt/entrypoint
 RUN chmod +x /opt/entrypoint
 
