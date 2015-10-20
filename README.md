@@ -1,5 +1,4 @@
 # ScribeUI
-
 ScribeUI v1.8 with MapServer and Apache.
 
 Reference : http://mapgears.github.io/scribeui/
