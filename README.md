@@ -10,27 +10,18 @@ The image is based on Ubuntu 14.04 Trusty.
 The demo data was loaded into the image.
 The image is configured to run in production (in Apache).
 
-1- Start in background:
+To start in background:
 
-docker run --name scribeui -p 8080:80 -i -t -d christianbeland/scribeui-docker bash
+   docker run --name scribeui -p 8080:80 -e "SCRIBEUI_URL=your_site_domain.com:8080" -d christianbeland/scribeui-docker apachectl -D FOREGROUND
 
+To attach to running container:
 
-2- Attach to running container:
+   docker ps
 
-docker ps
+   docker exec -it CONTAINER_ID bash
 
-docker exec -it CONTAINER_ID bash
-
-3- Edit /opt/scribeui/local.ini and modify to set the url:port on the following lines:
-
-cgi.url = http://your_site_domain.com:8080/cgi-bin
-mapserver.url = http://your_site_domain.com:8080/cgi-bin/mapserv
-
-4- Start Apache service:
-
-/etc/init.d/apache2 start
-
-5- Browse to http://your_site_domain.com:8080/scribeui/
+To use:
+   Browse to http://your_site_domain.com:8080/scribeui/
 
 
 Note: Password for the default workspace is 'default'.
