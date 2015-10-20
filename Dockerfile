@@ -5,7 +5,7 @@ RUN echo "deb-src http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu t
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 314DF160
 RUN apt-get update
-s
+
 # install apache
 RUN apt-get install -y apache2 apache2-mpm-worker apache2-threaded-dev apache2-utils
 RUN a2enmod actions cgi alias
