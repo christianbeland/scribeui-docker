@@ -21,4 +21,5 @@ docker exec -it CONTAINER_ID bash
 ```
 
 To use, browse to **http://your_site_domain.com:8080/scribeui/**
+
 Note: Password for the default workspace is 'default'.
