@@ -1,6 +1,9 @@
 # ScribeUI
 ScribeUI v1.8 with MapServer and Apache.
 
+[![DockerPulls](https://img.shields.io/docker/pulls/christianbeland/scribeui-docker.svg)](https://hub.docker.com/r/christianbeland/scribeui-docker/)
+[![DockerStars](https://img.shields.io/docker/stars/christianbeland/scribeui-docker.svg)](https://hub.docker.com/r/christianbeland/scribeui-docker/)
+
 Reference : http://mapgears.github.io/scribeui/
 
 GitHub : https://github.com/mapgears/scribeui
